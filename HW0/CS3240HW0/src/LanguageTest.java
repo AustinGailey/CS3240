@@ -1,9 +1,11 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import java.nio.charset.Charset;
 import java.util.Iterator;
+import java.util.Random;
+
+import static org.junit.Assert.*;
+
 /**
  * Tests for class {@link Language} using the JUnit4 framework.
  *
@@ -248,5 +250,56 @@ public class LanguageTest {
         assertTrue(lang1.equals(lang2));
         assertTrue(lang2.equals(lang1));
         assertEquals(lang1, lang2);
+    }
+
+    @Test
+    public void assertHashCodeEqualsTest() {
+        Language lang1 = new Language();
+        Language lang2 = new Language();
+        lang1.addString("ab");
+        lang2.addString("ab");
+        assertEquals(lang1.hashCode(), lang2.hashCode());
+        lang1.addString("abc");
+        lang2.addString("abd");
+        assertNotEquals(lang1.hashCode(), lang2.hashCode());
+        assertEquals(lang2.hashCode() - lang1.hashCode(), 1);
+    }
+
+    @Test
+    public void assertEqualsLargeRandomLanguageSets() {
+        Language lang1 = new Language();
+        Language lang2 = new Language();
+        for(int i=0;i<2000;i++){
+            lang1.addString(givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect());
+            lang2.addString(givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect());
+        }
+        assertFalse(lang1.equals(lang2));
+    }
+
+    public String givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect() {
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        return new String(array, Charset.forName("UTF-8"));
+    }
+
+    @Test
+    public void assertHashCodeEqualsTest2() {
+        Language lang1 = new Language();
+        Language lang2 = new Language();
+        lang1.addString("abcdefg");
+        lang2.addString("abcdefg");
+        System.out.println(lang1 + "\n" + lang2);
+        assertEquals(lang1.hashCode(), lang2.hashCode());
+        for(int i = 0; i < 1000; i++) {
+            byte[] array = new byte[7]; // length is bounded by 7
+            byte[] array2 = new byte[7]; // length is bounded by 7
+            new Random().nextBytes(array);
+            new Random().nextBytes(array2);
+            lang1.addString(new String(array, Charset.forName("UTF-8")));
+            lang1.addString(new String(array2, Charset.forName("UTF-8")));
+        }
+        System.out.println(lang1 + "\n" + lang2);
+        assertNotEquals(lang1.hashCode(), lang2.hashCode());
+        //assertEquals(lang2.hashCode() - lang1.hashCode(), 1);
     }
 }

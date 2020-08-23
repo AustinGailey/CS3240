@@ -109,7 +109,7 @@ public final class Language extends Object implements Iterable<String>, java.io.
     @Override
     public boolean equals(final Object obj) {
         if (obj instanceof Language) {
-            return strings.hashCode() == ((Language) obj).strings.hashCode();
+            return strings.equals(((Language)obj).strings);
         }
         return false;
     }
