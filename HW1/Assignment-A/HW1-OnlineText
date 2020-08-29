@@ -1,0 +1,36 @@
+A1
+{a1dfa2.jff,a1dfa2.jff,a1dfa5.jff} {a1dfa3.jff,a1dfa4.jff} 
+Reflection:
+If a particular rule appears in another rule, there is no need to implement both rules.
+Only the stronger rule needs to be written.
+
+The first set represents this because the longer rules are all elaborations on elimation of 00.
+The second set pairs for similar reasons
+
+A2
+Reflection:
+Each state must have a unique path.  Duplicate paths will break the DFA or at least provide non-determinate results.
+
+A3
+The easy removal is of the q8 & q7 nodes as they cannot be reached by the machine.
+The loop to self in the trapstate could also be removed.
+I was unable to identify if it could be further simplified.
+
+A4
+A4a.  G = {y,yx,yxx,xy}
+A4b.  G = {ε,x,yy,yyy}
+A4c. The langage permits any combination of x and y with length greater than 2 and must contain at least 1 y.
+
+Reflection:
+Finding the end point rules to a language given the productions takes a lot of thinking.
+Careful consideration must be given to what is permitted and what is not permitted.
+I found using a mental model of a DFA-like map to be very helpful in determining language.
+
+A5
+Σ = {0, 1} 
+G = ({S,A},{0,1},{P,S})
+P = {S->1A,A->01A|1A|ε}
+
+Reflection:
+Breaking the rules down into bitable chunks makes it easier to write a grammer.
+When you have a well defined grammer, it is easier to create a DFA.

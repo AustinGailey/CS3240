@@ -1,3 +1,5 @@
+package austin.gailey;
+
 import org.junit.Test;
 
 import java.nio.charset.Charset;
