@@ -19,13 +19,18 @@
 		</state>
 		<!--The list of transitions.-->
 		<transition>
-			<from>0</from>
-			<to>0</to>
-			<read/>
+			<from>3</from>
+			<to>3</to>
+			<read>0</read>
 		</transition>
 		<transition>
 			<from>0</from>
 			<to>0</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>3</to>
 			<read>1</read>
 		</transition>
 		<transition>
