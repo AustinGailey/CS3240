@@ -9,12 +9,16 @@ The second set pairs for similar reasons
 
 A2
 Reflection:
-Each state must have a unique path.  Duplicate paths will break the DFA or at least provide non-determinate results.
+Creating the state tables for this was not easy.  It is tedious and feels like a rabbit hole.
+I originally thought that NFA -> DFA just meant each transition needed one input and one output.
+Discovering that they must be computationally equivalent has caused me to actually read the Sipser book.
+I now have a solid understanding of the concept.
 
 A3
 The easy removal is of the q8 & q7 nodes as they cannot be reached by the machine.
 The loop to self in the trapstate could also be removed.
-I was unable to identify if it could be further simplified.
+Once removing the glaringly useless states, I was able to partition the remaining and find the
+distinguishable states. q3,q1 were not distinguishable as were q4,q6.
 
 A4
 A4a.  G = {y,yx,yxx,xy}
