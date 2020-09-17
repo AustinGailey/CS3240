@@ -1,0 +1,8 @@
+alias java7 "setenv JAVA_HOME `/usr/libexec/java_home -v1.7`"    
+alias java8 "setenv JAVA_HOME `/usr/libexec/java_home -v1.8`"    
+alias java9 "setenv JAVA_HOME `/usr/libexec/java_home -v9`"    
+alias java10 "setenv JAVA_HOME `/usr/libexec/java_home -v10`"    
+alias java11 "setenv JAVA_HOME `/usr/libexec/java_home -v11`"    
+alias java12 "setenv JAVA_HOME `/usr/libexec/java_home -v12`"    
+alias java13 "setenv JAVA_HOME `/usr/libexec/java_home -v13`"    
+alias showjavas "/usr/libexec/java_home -V"
