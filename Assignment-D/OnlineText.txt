@@ -1,0 +1,13 @@
+D123r.  The biggest learning curve for these PDA's was understanding the functionality of the transition function.
+        Once the transition function was understood, the pda's were simple.  The first state builds the stack,
+        then through a nondeterministic step, we remove all members of the stack.  If the stack is empty at the end,
+        then the string is a pallindrome.
+
+        Note: I was able to simplify the DFA's later, by using 1 character input as shown by Sipser
+
+
+D4r.    This was too easy.  Perhaps this is due to the fact that I have been working with CFG's all semester in PPL.
+        The example provided in Sipser was more interesting however I understanding you are checking for understanding here.
+        I truly wish that languages were taught in this format.  I believe language shapes how we think and these 
+        grammars demonstrate this hypothesis beautifully.
+
