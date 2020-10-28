@@ -1,0 +1,26 @@
+F1.  The tricky part about this is finding the center of the word.  In order to do this, I used some non-determinism.
+After the middle is found, I bounce back and forth on the tape, removing letters so long as it finds a match on the other side.
+Finally, if all letters are able to be removed and replaced only with #'s, the string is accepted.
+
+F2.  It was one thing to reduce the input accurately, it was another to ensure the head was in the correct place.
+In this machine, I chose to use more states to make tracking the exact state of the head easier, rather than using loops.
+While I see potential for other solutions, this was for me, the most time effective.
+
+F3.  This required me to find a way to keep track of the number of characters which appeared.
+Fortunately, this machine did not require a specific output.  I simply marked the beginning and end of the tape, then erased characters as they and their matches were found.
+Finally, I checked to unsure that only the tape end markers were they only characters read, validating the string
+
+F4.  The machine in F3 did not require an output of the tape while this one in fact did.
+Description of how f3tm.jff works:
+In order to overcome this, I made made a machine which created several transformations of the input string.
+It first sets all of the 0 values to 'a'.  This was used as a psuedo count of the characters.  After all of the 0's were accounted for, I entered the next state of the machine.
+The next state either found a 1 and changed it to a b or added a b for every a, setting the a to a 0 to identify that it had been used.
+Finally, all of the b characters were set to 1 and the string was validated to follow the language rules.
+~end of description~
+The use of several transformations of the tape made this problem more managable both during conceptual development and jflap implementation.
+
+F5.  The building blocks certainly made f5tm much more simple.  Having the ability to pass functionality around was pretty neat.
+In order to test this, I created a string generator which would remove values from the tape.  From there, I would pass that tape into f5tm.
+Each of these components were blocks in a larger testing machine.
+I feel very confident that the machine will acurrately concatenate inputs which have the expected {0,1} terminals and place the head at the expected location.
+This confidence is derived from thorough testing and effective breakdown of the components to make the machines readable.

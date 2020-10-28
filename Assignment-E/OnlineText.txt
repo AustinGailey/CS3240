@@ -1,0 +1,57 @@
+E1. 
+CNF:
+S -> TT
+S -> U
+T -> XT
+T -> TX
+T -> 1
+U -> XV
+U -> 1
+V -> UW
+W -> XX
+X -> 0
+
+Overthinking this does not solve anything faster.
+Restarting, and simply removing the useless Q,P variables, then replacing the long productions with the variables provided simplified everything very quickly.
+
+E2.
+The PDA is an accurate and correct analyzer of L2 becuase it ensures that for every opening parentheses, there is a closing pair.  A closing parenthesis cannot exist without the prefix of an opening parenthesis.
+
+E3.
+With E2's PDA, I ensured that the stack was empty at the end of the string.  With E3, I ensured that there was at least 1 a to ensure that n > m.
+
+E4.
+Proof by Contradiction:
+Assume that L4 is context free
+So L4 has pumping length P = 2
+String S is in L4
+S = ababab
+S = uvxyz
+uvwxy components are:
+u = a
+v = b
+x = ab
+y = a
+z = b
+so uvvxyyz should also be in L4
+uvvxyyz = abbabaab
+but uvvxyyz is not in L4
+so we have a contradiction to our assumption that L4 is context free.
+Therefore, L4 is not context free.
+
+It appears to me that the difference between the pumping lemma for regular languages and the pumping lemma for CFG is that in regular languages, you aren't allowed any stacks and for context free grammars, you are allowed one.
+The difference in the proofs are that you must account for the stack with CFG's
+
+E5.
+LA = { a^nb^n | n >= 0 }
+LB = { c^md^m | m >= 0 }
+
+Similar to the parentheses problem in E2, Here we have two languages. In LA, for every 'a' there must be an accompanied 'b' and similar with 'c' and 'd' in LB.
+Because each of these would require their own stack to keep track of the characters, it is not possible that the intersection of the two is also context free.
+
+In LA, the string 'ab' is valid.
+In LB, the string 'cd' is valid.
+
+In LA ∩ LB, the string 'acdb' could not be validated with a pda as it would require two separate stacks.
+
+I chose LA and LB because they are easy reference points to show how two stacks must be used to keep track of the characters.
