@@ -1,0 +1,47 @@
+H1. 
+This proof is based off of Theorem 4.17 in Sipser which uses diagonalization to show that ℝ is uncountable.
+
+The proof is by contradiction.  Suppose that a correspondence 𝑓 existed between between LC and Dᵢ.
+Our job is to show that 𝑓 fails to work as is should.
+For it to be a correspondence, 𝑓 must pair all the members of LC with all the members of Dᵢ.
+But we will find an 𝓍 in LC that is not paired with anything in Dᵢ, which will be our contradiction.
+
+By construction, we will create a decidable machine 𝓍.  
+To construct 𝓍, we will select one decidable string based on each Dᵢ which is not in Dᵢ and add it to 𝓍, to make 𝓍 different from the deciders recognized by LC.
+Here we see that LC cannot determine every turing machine which is a decider as our 𝓍 is a decidable turing machine which does not have a correspondence with LC.
+By contradiction of our premise that for each decider in LC, LC corresponds to a decider Dᵢ.
+We see that 𝑓(𝓍) does not have correspondence in LC, proving that LC is not countable and therefore not turing recognizable.
+
+
+H2. 
+This proof is based off of the proof for Atm, which we know to be undecidable.
+Here we see that LD = { < T > | T is a Turing Machine that accepts w if it also accepts wR }
+Here x is the union of w and wR
+In this case, we know that Atm is undecidable for the following definition:
+Atm = { < M,x > | M is a TM and M accepts x}
+
+Another approach I believe would be to say that both w and wR are undecidable by our our assumption of Atm so the union of w and wR must also be undecidable.
+
+H3. 
+This appears simple. Upon halting, simply exchange the verdicts of accept or reject.
+For a bit more elaboration, we know that a turing decidable language must either accept, reject, or halt.
+This means that if we are to flip the verdicts of the machine, it will still accept, reject or halt in a finite number of steps which meet the requirements of both recognizability and decidability.
+
+We also know that for a language to be decidable, both a lanuage and it's complement must be recognizable.
+Therefore, if a language is decidable, then by definition, it's complement is already known to be recognizable and therefore decidable as well.
+
+H4.
+Here we will prove by contradiction that the complement of Atm is not recognizable.
+First we assume Atm' is recognizable and co-recognizable.
+Because we know Atm is recognizable, our theorem that implies that if both a language and it's complement are recognizable then it is also decidable must hold.
+We know that Atm is not decidable which is a contradiction of our original assumption.
+Therefore Atm' cannot be recognizable.
+
+H5.
+The proofs were closely aligned with examples given in the book.  
+I struggled through many of these proofs, often feeling as though I was only writing things down to make some impression of progress.
+However, as I continued to slug through them, I found a deeper understanding of the concepts and by the time I finished the proof, I felt confident I understood what my proofs were conveying to the reader.
+Some of the proofs felt as though they could be conveyed in a single sentence however further elaboration felt necessary to demonstrate knowledge.
+The first proof was certainly the most difficult conceptually as it required me to re-read some of Sipser.
+The rest of them had an intuitive feel to them and I only hope that my intuition is correct.
+I feel as though I understand my proofs to the extent that I understand the material. 
