@@ -1,0 +1,24 @@
+I1.
+f(w) * f(w) / 2 -> f(w)^2
+O(f(w)^2)
+
+I2.
+We know that the intersection will be a subset of LA, and we know LA to be in the class of P which is polynomial time mapping reducible.
+Because we know this, we know the subset of LA is also polynomial time mapping reducible as any potential non-NP words would be exluded in the union of LA and LB.
+
+I3.
+Fortunately, we are reducing the union of LA and LB to LA where LA is not known to be of class P indicating it could be of class NP.
+Because verifiability appears to be easier than the qualifications for class P, we can assume that the polynomial time mapping reducibility of LA union LB is mappable to LA and considered NP-Complete as we cannot verify P = NP.
+
+I4.
+This statement demonstrates one of the biggest problems to face theoretical computation.  
+Here we have two languages, one each of class P and NP.
+The union of the two would imply that P = NP which we know does not have a satisfactory proof associated with the inference.
+Therefore, we conclude that the union is NP-Complete which is our way of saying this is as close as we can get to saying P = NP
+
+I5.
+Time complexity is quite a beast.  It is one thing to determine the big O notation, and something completely different to determine mapping and reducibility.
+I feel as though the answers to I2-I4 were straight forward once a solid understanding of the classes of P and NP were understood.
+I'm still uncertain of my intuition for I3.
+The text for this section was a challenge to get through and I had trouble identifying where closure under union and concatenation was specified.
+The closest thing I could assume was inferring via the proof that all context free grammars are in the class of P which I could then deduce.
