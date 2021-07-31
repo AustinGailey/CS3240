@@ -1,0 +1,116 @@
+####
+1. Proofs that the class of Turing-recognizable languages is closed under each of the following language operations:
+
+1.a. Union
+L1 and L2 are two Turing recognizable languages closed under union accepted by Turing Machines M1 and M2 such that L(M1)=L1, L(M2)=L2.
+Here we design a single tape Turing Machine M.
+-Given input w, we design a machine M that executes one step of M1 on w, followed by one step of M2 on w, then again one step of M1 on w and so on.
+-If M1 accepts, M accepts OR is M2 accepts, M accepts otherwise M rejects.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+1.b. Intersection
+Suppose L1 and L2 are two recognizable languages closed unter intersection and accepted by Turing Machines M1 and M2 such that L(M1)=L1, L(M2)=L2.
+Here we design a single tape Turing Machine M.
+-Given input w, run M1 on w.
+-If M1 rejects, M rejects otherwise run M2 on w.
+-If M2 rejects, M rejects, otherwise M accepts.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+1.c. Concatenation
+Suppose L1 and L2 are two recognizable languages closed under concatentation and accepted by Turing Machines M1 and M2 such that L(M1)=L1, L(M2)=L2.
+Here we design a single tape Turing Machine M.
+-Given an input w, use nondeterminism to create a partition, splitting the string such that w = xy.  
+-Now run Turing Machines M1 and M2 for the two parts respectively xy of the partition.
+-If both of the machines accept, then M accepts, otherwise M rejects.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+1.d. Kleene Star
+Suppose L1 is a recognizable language closed under kleene star and accepted by Turing Machine M1 such that L(M1)=L1.
+Here we design a single tape Turing Machine M.
+-Given an input w, select nondeterministically select an integer k and split w into k parts such that w = w1, w2... wk.
+-Run M on each part.
+-If M accepts all w1, w2 ... wk, M accepts, otherwise M rejects.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others. 
+
+####
+2. Proofs that the class of Turing-decidable languages is closed under the following language operations:
+
+2.a. Union
+Suppose L1 and L2 are two decidable languages closed under concatentation and accepted by Turing Machines M1 and M2 such that L(M1)=L1, L(M2)=L2.
+Here we construct a 2-tape Turing Machine M.
+-Given an input w, copy w to second tape.
+-On first tape, run M1 on w.
+-If M1 accepts then M accepts, otherwise simulate M2 on w.
+-If M2 accepts then M accepts otherwise M rejects.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+2.b. Intersection
+(Proof same as 1.b. - Because both M1 and M2 must accept & terminate)
+Suppose L1 and L2 are two decidable languages closed unter intersection and accepted by Turing Machines M1 and M2 such that L(M1)=L1, L(M2)=L2.
+Here we design a single tape Turing Machine M.
+-Given input w, run M1 on w.
+-If M1 rejects, M rejects otherwise run M2 on w.
+-If M2 rejects, M rejects, otherwise M accepts.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+2.c. Concatenation
+Suppose L1 and L2 are two decidable languages closed under concatentation and accepted by Turing Machines M1 and M2 such that L(M1)=L1, L(M2)=L2.
+Here we construct a 3-tape nondeterministic Turing Machine M.
+-Given an input w, use nondeterminism to create two partitions, splitting the string such that w = xy.
+-Copy x onto second tape and y onto the third tape
+-On the second tape, run M1 on x.
+-If M1 accepted, then continue otherwise M rejects
+-On the third tape, run M2 on y
+-If M2 accepts, then M accepts otherwise reject.
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+2.d. Kleene Star
+Suppose L1 is a decidable language closed under kleene star and accepted by Turing Machine M1 such that L(M1)=L1.
+Here we construct a 2-tape Turing Machine M.
+-Given input w, use nondeterminism to select a non-empty left-most part of w which has not yet been read and copy it to the second tape.
+-On the second tape, run M1 on the present string.
+-If M1 accepts and w was completely processed, then M accepts.  
+-If M1 accepts and some suffix of w has not yet been processed, then clear the second tape and select another non-empty left-most part of w and again, copy it to the second tape.
+-Continue until either w is processed or M1 rejects at which point M rejects. 
+Here we see that M is a decider as it is guaranteed to halt and will accept all and only strings in the language and reject all others.
+
+####
+3. Proofs that the following languages are undecidable, where Σ = { 0, 1}.  (Use reductions from Atm or other problems already known to be undecidable.)
+
+3.a.  LA = { < M > : M is a Turing machine and M accepts the string 001 }
+First we assume that LA is decidable. We will let R be a decider of LA.
+We will reduce from Atm by turing machine S.
+We will also let X be a Turing Machine which can decide Atm
+S: on input <M,w>
+  1. create a TM Q as follows:
+	On input X:
+		1. If x is 001 then accept.
+		2. Otherwise, rejects.
+  2. Run R on  < Q >.
+  3. Accept if R accepts, reject if R rejects.
+Because S decides Atm, which is known to be undecidable, we know that LA is not decidable.
+
+3.b.  LB = { < M > : M is a Turing machine, M accepts 001 and M does not accept 110 }
+(This proof will be similar to 3.a.)
+First we assume that LA is decidable. We will let R be a decider of LA.
+We will reduce from Atm by turing machine S.
+We will also let X be a Turing Machine which can decide Atm
+S: on input <M,w>
+  1. create a TM Q as follows:
+	On input X:
+		1. If x is 001 then accepts.
+		2. If x is 110 then rejects.
+		3. Otherwise, run M on w and accept if M accepts w.
+  2. Run R on  < Q >.
+  3. Accept if R accepts, reject if R rejects.
+Because S decides Atm, which is known to be undecidable, we know that LA is not decidable.
+
+
+Reflection:
+The proofs for 1 and 2 were relatively straight forward, having created TM's for these Languages in the past.  
+It was only necessasry to outline what the proof would look like such that it would follow the definition of the operations.
+
+Problem 3 was much more involved, requiring a solid understanding of the proof of Atm which I am still shaky on.  
+I believe that the general idea is that Atm cannot be decidable for all possible turing machines and that is the basis for reduction in other proofs.
+I still feel as though my proofs for 3 are hacky and not fully understood,
+however I am following as closely as I can the resources I have found regarding using Atm as a foundation for proving undecidability.
