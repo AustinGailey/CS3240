@@ -6,9 +6,27 @@ I2.
 We know that the intersection will be a subset of LA, and we know LA to be in the class of P which is polynomial time mapping reducible.
 Because we know this, we know the subset of LA is also polynomial time mapping reducible as any potential non-NP words would be exluded in the union of LA and LB.
 
+I2a.
+If LB ∈ P, then LA ∩ LB ≤p LA
+    LA = Σ* so I can identify some z ∉ LA
+    Construct a function 𝑓 that maps LA ∩ LB into LA
+    
+    On input w,
+    (1) Decide if w ∈ LB
+    (2) If so, set 𝑓(w) = w, otherwise set 𝑓(w) = z
+
 I3.
 Fortunately, we are reducing the union of LA and LB to LA where LA is not known to be of class P indicating it could be of class NP.
 Because verifiability appears to be easier than the qualifications for class P, we can assume that the polynomial time mapping reducibility of LA union LB is mappable to LA and considered NP-Complete as we cannot verify P = NP.
+
+I3a.
+If LB ∈ P, then LA ⋃ LB ≤p LA
+    LA ≠ ∅ so I can identify some y ∈ LA
+    Construct a function 𝑓 that maps LA ∪ LB into LA
+    
+    On input w,
+    (1) Decide if w ∈ LB
+    (2) If so, set 𝑓(w) = w, otherwise set 𝑓(w) = y
 
 I4.
 This statement demonstrates one of the biggest problems to face theoretical computation.  
